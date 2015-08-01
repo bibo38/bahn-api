@@ -1,0 +1,126 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.1.0",
+    "title": "Freedom of Speech",
+    "description": "A service that gives you the power to discuss and ride on any website.",
+    "contact": {
+      "name": "Freedom of Speech"
+    },
+    "license": {
+      "name": "LGPL"
+    }
+  },
+  "host": "localhost",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/stations": {
+      "get": {
+        "description": "Returns all stations from the system that the user has access to",
+        "operationId": "findStations",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "maximum number of results to return",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ride response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Station"
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Creates a new ride in the store.  Duplicates are allowed",
+        "operationId": "addStation",
+        "parameters": [
+          {
+            "name": "ride",
+            "in": "body",
+            "description": "Station to add to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Station"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ride response",
+            "schema": {
+              "$ref": "#/definitions/Station"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Station": {
+      "type": "object",
+      "required": [
+        "id",
+        "name"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

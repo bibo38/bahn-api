@@ -1,0 +1,35 @@
+{
+  "name": "bahn-api",
+  "version": "0.1.0",
+  "description": "A service that provides bahn rides",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tobiasoberrauch/bahn-api.git"
+  },
+  "keywords": [
+    "bahn",
+    "service",
+    "api",
+    "rides",
+    "stations",
+    "cities"
+  ],
+  "author": "Tobias Oberrauch <tobias.oberrauch@grolba.com>",
+  "license": "LGPL",
+  "bugs": {
+    "url": "https://github.com/tobiasoberrauch/bahn-api/issues"
+  },
+  "homepage": "https://github.com/tobiasoberrauch/bahn-api",
+  "dependencies": {
+    "express": "^4.13.2",
+    "express-debug": "^1.1.1",
+    "freeport": "^1.0.5",
+    "open": "0.0.5",
+    "request": "^2.60.0",
+    "swaggerize-express": "^4.0.2"
+  }
+}
